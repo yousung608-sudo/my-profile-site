@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전유성 - 영업사원 포트폴리오</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts (Noto Sans KR) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #faf8f3;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-divider {
+            background: linear-gradient(90deg, #faf8f3 0%, #f5f0e8 50%, #faf8f3 100%);
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(139, 90, 60, 0.15);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #8B5A3C;
+            border-radius: 2px;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link.active {
+            color: #8B5A3C;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #8B5A3C;
+            border-radius: 1px;
+        }
+
+        .toast {
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-4xl font-bold" style="color: #8B5A3C;">전유성</a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-12 ml-auto">
+                    <a href="#home" class="nav-link text-gray-600 hover:text-amber-900">홈</a>
+                    <a href="#about" class="nav-link text-gray-600 hover:text-amber-900">소개</a>
+                    <a href="#skills" class="nav-link text-gray-600 hover:text-amber-900">기술</a>
+                    <a href="#projects" class="nav-link text-gray-600 hover:text-amber-900">프로젝트</a>
+                    <a href="#contact" class="nav-link text-gray-600 hover:text-amber-900">연락처</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden flex flex-col space-y-1.5 focus:outline-none">
+                    <div class="w-6 h-0.5 bg-gray-800 transition-all" id="line1"></div>
+                    <div class="w-6 h-0.5 bg-gray-800 transition-all" id="line2"></div>
+                    <div class="w-6 h-0.5 bg-gray-800 transition-all" id="line3"></div>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <nav id="mobile-menu" class="hidden md:hidden pb-4 space-y-2 border-t border-gray-200">
+                <a href="#home" class="block px-4 py-2 text-gray-600 hover:bg-amber-50 hover:text-amber-900 rounded">홈</a>
+                <a href="#about" class="block px-4 py-2 text-gray-600 hover:bg-amber-50 hover:text-amber-900 rounded">소개</a>
+                <a href="#skills" class="block px-4 py-2 text-gray-600 hover:bg-amber-50 hover:text-amber-900 rounded">기술</a>
+                <a href="#projects" class="block px-4 py-2 text-gray-600 hover:bg-amber-50 hover:text-amber-900 rounded">프로젝트</a>
+                <a href="#contact" class="block px-4 py-2 text-gray-600 hover:bg-amber-50 hover:text-amber-900 rounded">연락처</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen bg-gradient-to-br from-amber-50 via-white to-yellow-50 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+            <div class="text-center fade-in">
+                <h1 class="text-5xl sm:text-6xl font-bold text-gray-900 mb-4">전유성</h1>
+                <p class="text-2xl font-semibold mb-6" style="color: #8B5A3C;">영업사원</p>
+                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">안녕하세요 영업사원 전유성 입니다 잘 부탁드립니다</p>
+                <div class="flex flex-col sm:flex-row gap-8 justify-center">
+                    <a href="#contact" class="px-8 py-3 text-white font-semibold rounded-lg hover:opacity-90 transition-opacity" style="background-color: #8B5A3C;">연락하기</a>
+                    <a href="#projects" class="px-8 py-3 bg-white font-semibold rounded-lg border-2 hover:bg-amber-50 transition-colors" style="color: #8B5A3C; border-color: #8B5A3C;">포트폴리오 보기</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 px-4 sm:px-6 lg:px-8" style="background-color: #faf8f3;">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-gray-900 mb-12 section-title">소개</h2>
+                <div class="bg-white rounded-2xl p-8 sm:p-12 fade-in" style="box-shadow: 0 4px 15px rgba(139, 90, 60, 0.08);">
+
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        안녕하세요! 저는 전문적인 영업 경험을 갖춘 영업사원입니다.
+                        고객과의 신뢰 관계를 중시하며, 효과적인 커뮤니케이션과 문제 해결 능력을 통해
+                        최고의 결과를 만들어내고 있습니다.
+                        새로운 기회와 도전에 항상 열려있으며, 함께 성장할 수 있는
+                        파트너십을 추구합니다. 잘 부탁드립니다!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-gray-900 mb-12 section-title">기술 스택</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <!-- HTML Card -->
+                    <div class="bg-white rounded-xl p-8 text-center card-hover fade-in" style="box-shadow: 0 4px 15px rgba(139, 90, 60, 0.08);">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #f5e6d3;">
+                            <span class="text-2xl">📄</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">HTML</h3>
+                        <p class="text-gray-600">웹 페이지 구조와 마크업</p>
+                        <div class="mt-4">
+                            <span class="inline-block px-3 py-1 rounded-full text-sm font-semibold" style="background-color: #fce4d6; color: #8B5A3C;">기초</span>
+                        </div>
+                    </div>
+
+                    <!-- CSS Card -->
+                    <div class="bg-white rounded-xl p-8 text-center card-hover fade-in" style="box-shadow: 0 4px 15px rgba(139, 90, 60, 0.08);">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #f5e6d3;">
+                            <span class="text-2xl">🎨</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">CSS</h3>
+                        <p class="text-gray-600">스타일링과 레이아웃</p>
+                        <div class="mt-4">
+                            <span class="inline-block px-3 py-1 rounded-full text-sm font-semibold" style="background-color: #fce4d6; color: #8B5A3C;">기초</span>
+                        </div>
+                    </div>
+
+                    <!-- JavaScript Card -->
+                    <div class="bg-white rounded-xl p-8 text-center card-hover fade-in" style="box-shadow: 0 4px 15px rgba(139, 90, 60, 0.08);">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #f5e6d3;">
+                            <span class="text-2xl">⚙️</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">JavaScript</h3>
+                        <p class="text-gray-600">인터랙티브 기능 구현</p>
+                        <div class="mt-4">
+                            <span class="inline-block px-3 py-1 rounded-full text-sm font-semibold" style="background-color: #fce4d6; color: #8B5A3C;">기초</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8" style="background-color: #faf8f3;">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold text-gray-900 mb-12 section-title">프로젝트 & 포트폴리오</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="bg-white rounded-xl overflow-hidden card-hover fade-in" style="box-shadow: 0 4px 15px rgba(139, 90, 60, 0.08);">
+                        <div class="h-48 bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
+                            <span class="text-6xl">📱</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">프로젝트 1</h3>
+                            <p class="text-gray-600 mb-4">혁신적인 모바일 애플리케이션 개발 및 고객 솔루션 구현</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: #fce4d6; color: #8B5A3C;">HTML</span>
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: #fce4d6; color: #8B5A3C;">CSS</span>
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: #fce4d6; color: #8B5A3C;">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="bg-white rounded-xl overflow-hidden card-hover fade-in" style="box-shadow: 0 4px 15px rgba(139, 90, 60, 0.08);">
+                        <div class="h-48 bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
+                            <span class="text-6xl">💼</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">프로젝트 2</h3>
+                            <p class="text-gray-600 mb-4">비즈니스 솔루션 및 영업 전략 최적화 프로젝트 진행</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: #fce4d6; color: #8B5A3C;">전략</span>
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: #fce4d6; color: #8B5A3C;">분석</span>
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: #fce4d6; color: #8B5A3C;">컨설팅</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3 -->
+                    <div class="bg-white rounded-xl overflow-hidden card-hover fade-in" style="box-shadow: 0 4px 15px rgba(139, 90, 60, 0.08);">
+                        <div class="h-48 bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
+                            <span class="text-6xl">🎯</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">프로젝트 3</h3>
+                            <p class="text-gray-600 mb-4">고객 만족도 향상 및 성과 목표 달성 프로젝트</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: #fce4d6; color: #8B5A3C;">경영</span>
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: #fce4d6; color: #8B5A3C;">마케팅</span>
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: #fce4d6; color: #8B5A3C;">판매</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-4xl font-bold text-gray-900 mb-8 section-title">연락처</h2>
+                <p class="text-lg text-gray-600 mb-12">궁금한 점이나 협업 제안이 있으신가요? 편하게 연락주세요!</p>
+
+                <div class="rounded-xl p-8 fade-in" style="background-color: #faf8f3; box-shadow: 0 4px 15px rgba(139, 90, 60, 0.08);">
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                        <span class="text-4xl">📧</span>
+                        <div>
+                            <p class="text-gray-600 text-sm mb-2">이메일</p>
+                            <p class="text-2xl font-bold text-gray-900">yousung608@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-8 justify-center">
+                        <a href="mailto:yousung608@gmail.com" class="px-6 py-3 text-white font-semibold rounded-lg hover:opacity-90 transition-opacity" style="background-color: #8B5A3C;">이메일 보내기</a>
+                        <button id="copy-email-btn" class="px-6 py-3 font-semibold rounded-lg transition-colors" style="background-color: #f5e6d3; color: #8B5A3C;">이메일 복사</button>
+                    </div>
+                </div>
+
+                <!-- Toast Notification -->
+                <div id="toast" class="hidden fixed bottom-8 right-8 text-white px-6 py-3 rounded-lg shadow-lg toast" style="background-color: #8B5A3C;">
+                    이메일이 복사되었습니다!
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-white py-16 px-4 sm:px-6 lg:px-8" style="background-color: #5a4a40;">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-gray-200">© 2024 전유성. All rights reserved.</p>
+            <p class="text-gray-300 text-sm mt-4">HTML, CSS, JavaScript로 제작되었습니다.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

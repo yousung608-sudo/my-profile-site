@@ -1,0 +1,26 @@
+# OS 생성 파일
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 에디터 설정
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 의존성 및 빌드 결과물
+node_modules/
+dist/
+build/
+
+# 로그 및 임시 파일
+*.log
+npm-debug.log*
+tmp/
+*.tmp
+
+# 환경 변수 및 비밀 정보
+.env
+.env.*
